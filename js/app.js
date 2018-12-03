@@ -48,8 +48,15 @@ $$('#my-login-screen .login-button').on('click', function () {
     //close-logInScreen
     app.loginScreen.close('#my-login-screen');
   }
+
   
 
   // Alert username and password
   console.log('Username: ' + username + '<br>Password: ' + password);
 });
+
+$$('.menu-link').on('click', function() {
+  app.panel.close("left", "true");
+  console.log("closed");
+});
+
