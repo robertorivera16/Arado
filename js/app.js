@@ -49,6 +49,7 @@ $$('#my-login-screen .login-button').on('click', function () {
     app.loginScreen.close('#my-login-screen');
   }
 
+
   
 
   // Alert username and password
@@ -59,4 +60,5 @@ $$('.menu-link').on('click', function() {
   app.panel.close("left", "true");
   console.log("closed");
 });
+
 
