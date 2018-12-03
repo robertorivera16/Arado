@@ -51,7 +51,7 @@ $$('#my-login-screen .login-button').on('click', function () {
   } else{
     //close-logInScreen
     app.loginScreen.close('#my-login-screen');
-    app.dialog.alert('En esta platafroma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
+    app.dialog.alert('En esta plataforma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
   }
 
   // Alert username and password
