@@ -36,12 +36,12 @@ var mainView = app.views.create('.view-main', {
 
 app.loginScreen.open('#my-login-screen');
 var smartSelect = app.smartSelect.get('.smart-select');
-smartSelect.closeOnSelect = "true";
+
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {
   var username = $$('#my-login-screen [name="username"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
-  //app.loginScreen.close('#my-login-screen');
+  app.loginScreen.close('#my-login-screen');
   if(username !== 'rest@gmail.com' && password !== 'comida'){
     app.dialog.alert('Invalid E-mail & password. Please try again.', 'Error', );
   } else if(username !== 'rest@gmail.com'){
@@ -63,6 +63,41 @@ $$('.menu-link').on('click', function() {
   app.panel.close("left", "true");
   console.log("closed");
 });
+
+$$(document).on('page:afterin', function () {
+  var ev = document.getElementById("pina");
+  ev.addEventListener("click", myFunction);
+  function myFunction() {
+    app.dialog.prompt('Cantidad:', function (q) {
+      if(!isNaN(q) && (!q || 0 === q.length)){
+        app.dialog.confirm('¿Esta seguro ' + q + '?', function () {
+          localStorage.setItem(ev.id, q);
+          app.dialog.alert('Su selección es de: ' + q + " ");
+          console.log(localStorage.key(0) + localStorage.getItem(ev.id));
+        });
+      }else{
+        app.dialog.alert('Solo se permiten números.');
+      }
+    });
+  }
+});
+
+
+
+
+// $$('.add-to-cart').on('click', function(){
+//   console.log("MAMABICHO!");
+//   app.dialog.prompt('Cantidad:', function (q) {
+//     if(typeof q == "number"){
+//       app.dialog.confirm('¿Esta segure? ' + q + '?', function () {
+//         app.dialog.alert('Su selección fue de: ' + q);
+//       });
+//     }else {
+//       app.dialog.alert('Solo se permiten numeros');
+//     }
+//   });
+
+// });
 
 smartSelect.on('close', function() {
   if(smartSelect.$valueEl[0].innerHTML == "Ponce"){
