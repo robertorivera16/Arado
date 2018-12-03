@@ -1,1 +1,7 @@
 /* Your app styles here */
+.demo-card-header-pic .card-content {
+  height: 50px;
+  background-size: fill;
+  background-position: center;
+  color: #fff;
+}
