@@ -7,6 +7,9 @@ var app  = new Framework7({
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
   theme: 'auto', // Automatic theme detection
+  smartSelect: {
+    closeOnSelect: 'true',
+  },
   // App root data
   data: function () {
     return {
@@ -32,7 +35,8 @@ var mainView = app.views.create('.view-main', {
 });
 
 app.loginScreen.open('#my-login-screen');
-
+var smartSelect = app.smartSelect.get('.smart-select');
+smartSelect.closeOnSelect = "true";
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {
   var username = $$('#my-login-screen [name="username"]').val();
@@ -49,8 +53,10 @@ $$('#my-login-screen .login-button').on('click', function () {
     app.loginScreen.close('#my-login-screen');
     app.dialog.alert('En esta platafroma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
   }
+
   // Alert username and password
   console.log('Username: ' + username + '<br>Password: ' + password);
+
 });
 
 $$('.menu-link').on('click', function() {
@@ -58,4 +64,18 @@ $$('.menu-link').on('click', function() {
   console.log("closed");
 });
 
+smartSelect.on('close', function() {
+  if(smartSelect.$valueEl[0].innerHTML == "Ponce"){
+    document.getElementById('maya-section').style.display = "none";
+    document.getElementById('ponce-section').style.display = "block";
+  }
+  else if(smartSelect.$valueEl[0].innerHTML == "Mayagüez"){
+    document.getElementById('maya-section').style.display = "block";
+    document.getElementById('ponce-section').style.display = "none";
+  }else{
+    document.getElementById('maya-section').style.display = "block";
+    document.getElementById('ponce-section').style.display = "block";
+  }
+
+});
 
