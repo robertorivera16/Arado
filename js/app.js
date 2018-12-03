@@ -37,7 +37,7 @@ app.loginScreen.open('#my-login-screen');
 $$('#my-login-screen .login-button').on('click', function () {
   var username = $$('#my-login-screen [name="username"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
-  app.loginScreen.close('#my-login-screen');
+  //app.loginScreen.close('#my-login-screen');
   if(username !== 'rest@gmail.com' && password !== 'comida'){
     app.dialog.alert('Invalid E-mail & password. Please try again.', 'Error', );
   } else if(username !== 'rest@gmail.com'){
@@ -47,11 +47,8 @@ $$('#my-login-screen .login-button').on('click', function () {
   } else{
     //close-logInScreen
     app.loginScreen.close('#my-login-screen');
+    app.dialog.alert('En esta platafroma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
   }
-
-
-  
-
   // Alert username and password
   console.log('Username: ' + username + '<br>Password: ' + password);
 });
