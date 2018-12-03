@@ -7,6 +7,9 @@ var app  = new Framework7({
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
   theme: 'auto', // Automatic theme detection
+  smartSelect: {
+    closeOnSelect: 'true',
+  },
   // App root data
   data: function () {
     return {
