@@ -4,8 +4,28 @@ routes = [
     url: './index.html',
   },
   {
-    path: '/help/',
-    url: './pages/help.html',
+    path: '/la_frutera/',
+    url: './pages/la_frutera.html',
+  },
+  {
+    path: '/el_carnicero/',
+    url: './pages/el_carnicero.html',
+  },
+  {
+    path: '/agrocentro/',
+    url: './pages/agrocentro.html',
+  },
+  {
+    path: '/el_mercado/',
+    url: './pages/el_mercado.html',
+  },
+  {
+    path: '/la_tiendita/',
+    url: './pages/la_tiendita.html',
+  },
+  {
+    path: '/el_parking/',
+    url: './pages/el_parking.html',
   },
   {
     path: '/form/',
