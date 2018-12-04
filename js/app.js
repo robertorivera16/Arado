@@ -51,7 +51,7 @@ $$('#my-login-screen .login-button').on('click', function () {
   } else{
     //close-logInScreen
     app.loginScreen.close('#my-login-screen');
-    app.dialog.alert('En esta platafroma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
+    app.dialog.alert('En esta plataforma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
   }
 
   // Alert username and password
@@ -99,6 +99,27 @@ $$(document).on('page:afterin', function () {
       }
     });
   }
+});
+
+
+$$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
+  console.log("Entered page:init Checkout");
+  var element = document.getElementById("product-list");
+  for (var i = 0; i < localStorage.length; i++){
+    console.log("Entered");
+    var key = localStorage.key(i);
+    var value = localStorage.value(i);
+    var para = document.createElement("li");
+    console.log(key + value)
+    var node = document.createTextNode(key + "  " + value);
+    para.appendChild(node);
+
+    element.appendChild(para);
+
+
+  }
+
+
 });
 
 

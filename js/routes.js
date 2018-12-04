@@ -28,6 +28,10 @@ routes = [
     url: './pages/el_parking.html',
   },
   {
+    path: '/checkout/',
+    url: './pages/checkout.html',
+  },
+  {
     path: '/form/',
     url: './pages/form.html',
   },
