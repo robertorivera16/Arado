@@ -40,6 +40,10 @@ routes = [
     url: './pages/checkout.html',
   },
   {
+    path: '/help/',
+    url: './pages/help.html',
+  },
+  {
     path: '/form/',
     url: './pages/form.html',
   },
