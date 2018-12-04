@@ -118,8 +118,6 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     para.appendChild(node);
     para.appendChild(icon);
     element.appendChild(para);
-
-
   }
 
 
