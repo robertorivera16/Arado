@@ -88,7 +88,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
           localStorage.setItem(mango.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
-          document.getElementById("checkOutBtn").innerText = "Check-Out(" +localStorage.length+ ")";
+          document.getElementById("checkOutBtn").innerText = "Bolsa(" +localStorage.length+ ")";
         });
       }else{
         app.dialog.alert('Solo se permiten números.', 'Error');
