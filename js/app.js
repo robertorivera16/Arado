@@ -41,7 +41,6 @@ var smartSelect = app.smartSelect.get('.smart-select');
 $$('#my-login-screen .login-button').on('click', function () {
   var username = $$('#my-login-screen [name="username"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
-  app.loginScreen.close('#my-login-screen');
   if(username !== 'rest@gmail.com' && password !== 'comida'){
     app.dialog.alert('Invalid E-mail & password. Please try again.', 'Error', );
   } else if(username !== 'rest@gmail.com'){
