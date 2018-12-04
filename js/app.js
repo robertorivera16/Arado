@@ -74,7 +74,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
           localStorage.setItem(pina.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
-          
+          document.getElementById("checkOutBtn").innerText = "Check-Out(" +localStorage.length+ ")";
         });
       }else{
         app.dialog.alert('Solo se permiten números.', 'Error');
@@ -89,7 +89,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
           localStorage.setItem(mango.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
-          
+          document.getElementById("checkOutBtn").innerText = "Check-Out(" +localStorage.length+ ")";
         });
       }else{
         app.dialog.alert('Solo se permiten números.', 'Error');
@@ -107,10 +107,16 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     var key = localStorage.key(i);
     var value = localStorage.getItem(key);
     var para = document.createElement("li");
+    var icon = document.createElement("i");
+    var button = document.createElement("button");
+    icon.classList.add("icon");
+    icon.classList.add("f7-icons");
     console.log(key + value)
     var node = document.createTextNode(key + "  " + value);
+    var node1 = document.createTextNode("close_round");
+    icon.appendChild(node1);
     para.appendChild(node);
-
+    para.appendChild(icon);
     element.appendChild(para);
 
 

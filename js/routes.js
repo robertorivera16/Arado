@@ -8,6 +8,14 @@ routes = [
     url: './pages/la_frutera.html',
   },
   {
+    path: '/help/',
+    url: './pages/help.html',
+  },
+  {
+    path: '/ajustes/',
+    url: './pages/settings.html',
+  },
+  {
     path: '/el_carnicero/',
     url: './pages/el_carnicero.html',
   },
