@@ -111,6 +111,8 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     var button = document.createElement("button");
     icon.classList.add("icon");
     icon.classList.add("f7-icons");
+    icon.classList.add("padding-left");
+    para.classList.add("padding-left");
     console.log(key + value)
     var node = document.createTextNode(key + "  " + value);
     var node1 = document.createTextNode("close_round");
