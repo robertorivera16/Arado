@@ -90,7 +90,7 @@ $$(document).on('page:afterin', function () {
     app.dialog.prompt('Entrar libras (lbs):', ' ', function (q) {
       if(!isNaN(q)){
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
-          localStorage.setItem(pina.id, q);
+          localStorage.setItem(mango.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
           
         });
