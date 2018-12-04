@@ -64,11 +64,8 @@ $$('.menu-link').on('click', function() {
   console.log("closed");
 });
 
-$$(document).on('page:afterin', function () {
-  for (var i = 0; i < localStorage.length; i++){
-    var key = localStorage.key(i);
-    console.log(localStorage.key(i) + " " + localStorage.getItem(key))
-  }
+$$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
+  
   var pina = document.getElementById("pina");
   pina.addEventListener("click", pinaFunction);
   function pinaFunction() {
@@ -108,7 +105,7 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   for (var i = 0; i < localStorage.length; i++){
     console.log("Entered");
     var key = localStorage.key(i);
-    var value = localStorage.value(i);
+    var value = localStorage.getItem(key);
     var para = document.createElement("li");
     console.log(key + value)
     var node = document.createTextNode(key + "  " + value);
