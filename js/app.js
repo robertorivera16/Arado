@@ -87,6 +87,27 @@ $$(document).on('page:afterin', function () {
 });
 
 
+$$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
+  console.log("Entered page:init Checkout");
+  var element = document.getElementById("product-list");
+  for (var i = 0; i < localStorage.length; i++){
+    console.log("Entered");
+    var key = localStorage.key(i);
+    var value = localStorage.value(i);
+    var para = document.createElement("li");
+    console.log(key + value)
+    var node = document.createTextNode(key + "  " + value);
+    para.appendChild(node);
+
+    element.appendChild(para);
+
+
+  }
+
+
+});
+
+
 
 
 // $$('.add-to-cart').on('click', function(){
