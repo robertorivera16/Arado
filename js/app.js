@@ -33,7 +33,7 @@ var app  = new Framework7({
 var mainView = app.views.create('.view-main', {
   url: '/'
 });
-
+localStorage.clear();
 app.loginScreen.open('#my-login-screen');
 var smartSelect = app.smartSelect.get('.smart-select');
 
@@ -65,18 +65,22 @@ $$('.menu-link').on('click', function() {
 });
 
 $$(document).on('page:afterin', function () {
+  for (var i = 0; i < localStorage.length; i++){
+    var key = localStorage.key(i);
+    console.log(localStorage.key(i) + " " + localStorage.getItem(key))
+  }
   var ev = document.getElementById("pina");
   ev.addEventListener("click", myFunction);
   function myFunction() {
     app.dialog.prompt('Cantidad:', function (q) {
-      if(!isNaN(q) && (!q || 0 === q.length)){
-        app.dialog.confirm('¿Esta seguro ' + q + '?', function () {
+      if(!isNaN(q) || !q || 0 != q.length){
+        app.dialog.confirm('¿Esta seguro ' + q + '?', 'Cantidad:', function () {
           localStorage.setItem(ev.id, q);
-          app.dialog.alert('Su selección es de: ' + q + " ");
-          console.log(localStorage.key(0) + localStorage.getItem(ev.id));
+          app.dialog.alert('Su selección es de: ' + q + " ", 'Selección:');
+          
         });
       }else{
-        app.dialog.alert('Solo se permiten números.');
+        app.dialog.alert('Solo se permiten números.', 'Error');
       }
     });
   }
