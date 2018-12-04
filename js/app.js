@@ -69,14 +69,29 @@ $$(document).on('page:afterin', function () {
     var key = localStorage.key(i);
     console.log(localStorage.key(i) + " " + localStorage.getItem(key))
   }
-  var ev = document.getElementById("pina");
-  ev.addEventListener("click", myFunction);
-  function myFunction() {
-    app.dialog.prompt('Cantidad:', function (q) {
-      if(!isNaN(q) || !q || 0 != q.length){
-        app.dialog.confirm('¿Esta seguro ' + q + '?', 'Cantidad:', function () {
-          localStorage.setItem(ev.id, q);
-          app.dialog.alert('Su selección es de: ' + q + " ", 'Selección:');
+  var pina = document.getElementById("pina");
+  pina.addEventListener("click", pinaFunction);
+  function pinaFunction() {
+    app.dialog.prompt('Entrar libras (lbs):', ' ', function (q) {
+      if(!isNaN(q)){
+        app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
+          localStorage.setItem(pina.id, q);
+          app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
+          
+        });
+      }else{
+        app.dialog.alert('Solo se permiten números.', 'Error');
+      }
+    });
+  }
+  var mango = document.getElementById("mango");
+  mango.addEventListener("click", mangoFunction);
+  function mangoFunction() {
+    app.dialog.prompt('Entrar libras (lbs):', ' ', function (q) {
+      if(!isNaN(q)){
+        app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
+          localStorage.setItem(mango.id, q);
+          app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
           
         });
       }else{
