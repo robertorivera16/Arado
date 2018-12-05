@@ -102,23 +102,53 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   console.log("Entered page:init Checkout");
   var element = document.getElementById("product-list");
   for (var i = 0; i < localStorage.length; i++){
-    console.log("Entered");
     var key = localStorage.key(i);
     var value = localStorage.getItem(key);
-    var para = document.createElement("li");
-    var icon = document.createElement("i");
-    var button = document.createElement("button");
-    icon.classList.add("icon");
-    icon.classList.add("f7-icons");
-    icon.classList.add("padding-left");
-    para.classList.add("padding-left");
-    console.log(key + value)
-    var node = document.createTextNode(key + "  " + value);
-    var node1 = document.createTextNode("close_round");
-    icon.appendChild(node1);
-    para.appendChild(node);
-    para.appendChild(icon);
-    element.appendChild(para);
+    var li = document.createElement("li");
+    li.classList.add("swipeout");
+    var itemContent = document.createElement("div");
+    itemContent.classList.add("item-content");
+    itemContent.classList.add("swipeout-content");
+    var itemInner = document.createElement("div");
+    itemInner.classList.add("item-inner");
+    var itemTitle = document.createElement("div");
+    itemTitle.classList.add("item-title");
+    itemInner.appendChild(itemTitle);
+    itemContent.appendChild(itemInner);
+    li.appendChild(itemContent);
+    var swipeoutAct = document.createElement("div");
+    swipeoutAct.classList.add("swipeout-actions-right");
+    var del = document.createElement("a");
+    del.classList.add("swipeout-delete");
+    li.appendChild(swipeoutAct);
+
+    var prod = document.createTextNode(key + "  " + value);
+    itemTitle.appendChild(prod);
+    swipeoutAct.appendChild(del);
+
+    del.appendChild(document.createTextNode("Delete"));
+
+    element.appendChild(li);
+
+
+
+    // console.log("Entered");
+    // var key = localStorage.key(i);
+    // var value = localStorage.getItem(key);
+    // var para = document.createElement("li");
+    // var icon = document.createElement("i");
+    // var button = document.createElement("button");
+    // icon.classList.add("icon");
+    // icon.classList.add("f7-icons");
+    // icon.classList.add("padding-left");
+    // para.classList.add("padding-left");
+    // console.log(key + value)
+    // var node = document.createTextNode(key + "  " + value);
+    // var node1 = document.createTextNode("close_round");
+    // icon.appendChild(node1);
+    // para.appendChild(node);
+    // para.appendChild(icon);
+    // element.appendChild(para);
   }
 
 
@@ -127,19 +157,7 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
 
 
 
-// $$('.add-to-cart').on('click', function(){
-//   console.log("MAMABICHO!");
-//   app.dialog.prompt('Cantidad:', function (q) {
-//     if(typeof q == "number"){
-//       app.dialog.confirm('¿Esta segure? ' + q + '?', function () {
-//         app.dialog.alert('Su selección fue de: ' + q);
-//       });
-//     }else {
-//       app.dialog.alert('Solo se permiten numeros');
-//     }
-//   });
 
-// });
 
 smartSelect.on('close', function() {
   if(smartSelect.$valueEl[0].innerHTML == "Ponce"){
