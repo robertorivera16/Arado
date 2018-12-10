@@ -37,21 +37,42 @@ localStorage.clear();
 app.loginScreen.open('#my-login-screen');
 var smartSelect = app.smartSelect.get('.smart-select');
 
+$$(document).on('page:init', '.page[data-name="ajustes"]', function (e) {
+  var formData = {
+    'nombre': 'Fulano de Tal',
+    'email': 'rest@gmail.com',
+    'telefono': '7877839090',
+    'direccion': '#31 Calle La Moneda, Mayaguez, PR 00782',
+    'nombre_tarjeta': 'Juan del Pueblo',
+    'num_tarjeta': '4549847593749059',
+    'fecha_exp': '10/08/2021',
+  }
+  app.form.fillFromData('#my-form', formData);
+  $$('.convert-form-to-data').on('click', function(){
+    app.form.storeFormData('#my-form', app.form.convertToData('#my-form'));
+    // var formData = app.form.convertToData('#my-form');
+    // alert(JSON.stringify(formData));
+    console.log(app.form.getFormData('#my-form'));
+  });
+
+});
+
 // Login Screen Demo
 $$('#my-login-screen .login-button').on('click', function () {
   var username = $$('#my-login-screen [name="username"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
-  if(username !== 'rest@gmail.com' && password !== 'comida'){
-    app.dialog.alert('Invalid E-mail & password. Please try again.', 'Error', );
-  } else if(username !== 'rest@gmail.com'){
-    app.dialog.alert('Invalid E-mail. Please try again.', 'Error', );
-  } else if(password !== 'comida'){
-    app.dialog.alert('Invalid password. Please try again.','Error', );
-  } else{
-    //close-logInScreen
-    app.loginScreen.close('#my-login-screen');
-    app.dialog.alert('En esta plataforma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
-  }
+  app.loginScreen.close('#my-login-screen');
+  // if(username !== 'rest@gmail.com' && password !== 'comida'){
+  //   app.dialog.alert('Invalid E-mail & password. Please try again.', 'Error', );
+  // } else if(username !== 'rest@gmail.com'){
+  //   app.dialog.alert('Invalid E-mail. Please try again.', 'Error', );
+  // } else if(password !== 'comida'){
+  //   app.dialog.alert('Invalid password. Please try again.','Error', );
+  // } else{
+  //   //close-logInScreen
+  //   app.loginScreen.close('#my-login-screen');
+  //   app.dialog.alert('En esta plataforma podras tener acceso al comercio local de Puerto Rico. Para Ayuda, favor dirigirse al menu superior izquierdo y seleccionar "Ayuda"',"Bienvenidos a Arado");
+  // }
 
   // Alert username and password
   console.log('Username: ' + username + '<br>Password: ' + password);
@@ -64,7 +85,7 @@ $$('.menu-link').on('click', function() {
 });
 
 $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
-  
+
   var pina = document.getElementById("pina");
   pina.addEventListener("click", pinaFunction);
   function pinaFunction() {
@@ -102,6 +123,9 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   console.log("Entered page:init Checkout");
   var element = document.getElementById("product-list");
   for (var i = 0; i < localStorage.length; i++){
+    if(localStorage.key(i) === 'f7form-my-form'){
+      continue;
+    }
     var key = localStorage.key(i);
     var value = localStorage.getItem(key);
     var li = document.createElement("li");
@@ -131,25 +155,6 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
 
     element.appendChild(li);
 
-
-
-    // console.log("Entered");
-    // var key = localStorage.key(i);
-    // var value = localStorage.getItem(key);
-    // var para = document.createElement("li");
-    // var icon = document.createElement("i");
-    // var button = document.createElement("button");
-    // icon.classList.add("icon");
-    // icon.classList.add("f7-icons");
-    // icon.classList.add("padding-left");
-    // para.classList.add("padding-left");
-    // console.log(key + value)
-    // var node = document.createTextNode(key + "  " + value);
-    // var node1 = document.createTextNode("close_round");
-    // icon.appendChild(node1);
-    // para.appendChild(node);
-    // para.appendChild(icon);
-    // element.appendChild(para);
   }
 
 
