@@ -13,7 +13,7 @@ routes = [
   },
   {
     path: '/ajustes/',
-    url: './pages/settings.html',
+    url: './pages/ajustes.html',
   },
   {
     path: '/el_carnicero/',
