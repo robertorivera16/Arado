@@ -122,7 +122,7 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     del.classList.add("swipeout-delete");
     li.appendChild(swipeoutAct);
 
-    var prod = document.createTextNode(key + "        " + value + " lbs");
+    var prod = document.createTextNode(key.charAt(0).toUpperCase() + key.slice(1) "        " + value + " lbs");
     itemTitle.appendChild(prod);
     swipeoutAct.appendChild(del);
 
