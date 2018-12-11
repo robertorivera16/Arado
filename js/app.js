@@ -122,6 +122,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
 $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   console.log("Entered page:init Checkout");
   var element = document.getElementById("product-list");
+  var total = 0;
   for (var i = 0; i < localStorage.length; i++){
     if(localStorage.key(i) === 'f7form-my-form'){
       continue;
@@ -145,9 +146,17 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     var del = document.createElement("a");
     del.classList.add("swipeout-delete");
     li.appendChild(swipeoutAct);
+    var cantidad = parseInt(value, 10);
+    var precio = 0;
+    if(key === 'mango'){
+      precio = cantidad * 1.67;
+    }else{
+      precio = cantidad * 0.87;
+    }
 
+    total = total + precio;
 
-    var prod = document.createTextNode(key.charAt(0).toUpperCase() + key.slice(1) + "  " + value + " LBS");
+    var prod = document.createTextNode("$" + precio.toString() + " - " + key.charAt(0).toUpperCase() + key.slice(1) + "  " + value + " LBS");
     itemTitle.appendChild(prod);
     swipeoutAct.appendChild(del);
 
@@ -156,7 +165,12 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     element.appendChild(li);
 
   }
+  var totalElem = document.createElement("p");
+  totalElem.classList.add("padding-left");
+  var totalNum = document.createTextNode("Total: $"total.toString());
+  totalElem.appendChild(totalNum);
 
+  element.appendChild(totalElem);
 
 });
 
