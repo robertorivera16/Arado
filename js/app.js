@@ -167,7 +167,7 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   }
   var totalElem = document.createElement("p");
   totalElem.classList.add("padding-left");
-  var totalNum = document.createTextNode("Total: $"total.toString());
+  var totalNum = document.createTextNode("Total: $" + total.toString());
   totalElem.appendChild(totalNum);
 
   element.appendChild(totalElem);
@@ -183,6 +183,8 @@ smartSelect.on('close', function() {
   if(smartSelect.$valueEl[0].innerHTML == "Ponce"){
     document.getElementById('maya-section').style.display = "none";
     document.getElementById('ponce-section').style.display = "block";
+  }else if(smartSelect.$valueEl[0].innerHTML == "Frutas"){
+    console.log('entered');
   }
   else if(smartSelect.$valueEl[0].innerHTML == "Mayagüez"){
     document.getElementById('maya-section').style.display = "block";
