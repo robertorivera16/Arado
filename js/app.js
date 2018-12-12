@@ -167,7 +167,7 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
   }
   var totalElem = document.createElement("p");
   totalElem.classList.add("padding-left");
-  var totalNum = document.createTextNode("Total: $" + total.toString());
+  var totalNum = document.createTextNode("Total: $" + total.toFixed(2).toString());
   totalElem.appendChild(totalNum);
 
   element.appendChild(totalElem);
