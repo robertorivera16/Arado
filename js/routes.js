@@ -51,6 +51,10 @@ routes = [
     path: '/historial/',
     url: './pages/historial.html',
   },
+  {
+    path: '/banana/',
+    url: './pages/banana_info.html',
+  },
   // Page Loaders & Router
   {
     path: '/page-loader-template7/:user/:userId/:posts/:postId/',
