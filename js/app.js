@@ -83,6 +83,12 @@ $$('.menu-link').on('click', function() {
   app.panel.close("left", "true");
   console.log("closed");
 });
+$$(document).on('page:afterin','.page[data-name="checkout_complete"]', function () {
+    var articles_html = document.getElementById("product-list").innerHTML;
+
+    document.getElementById("articulos_checkout").innerHTML = articles_html;
+  });
+
 
 $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
 
@@ -94,7 +100,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
           localStorage.setItem(pina.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
-          document.getElementById("checkOutBtn").innerText = "Bolsa(" +localStorage.length+ ")";
+          document.getElementById("items-num").innerText = ""+ localStorage.length+ "";
         });
       }else{
         app.dialog.alert('Solo se permiten números.', 'Error');
@@ -109,7 +115,7 @@ $$(document).on('page:afterin','.page[data-name="la_frutera"]', function () {
         app.dialog.confirm('¿Esta seguro ' + q + 'libra(s)?', 'Libras:', function () {
           localStorage.setItem(mango.id, q);
           app.dialog.alert('Su selección es de: ' + q + " libras", 'Gracias');
-          document.getElementById("checkOutBtn").innerText = "Bolsa(" +localStorage.length+ ")";
+          document.getElementById("items-num").innerText = ""+ localStorage.length+ "";
         });
       }else{
         app.dialog.alert('Solo se permiten números.', 'Error');
@@ -155,8 +161,9 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     }
 
     total = total + precio;
-
     var prod = document.createTextNode("$" + precio.toString() + " - " + key.charAt(0).toUpperCase() + key.slice(1) + "  " + value + " LBS");
+    
+
     itemTitle.appendChild(prod);
     swipeoutAct.appendChild(del);
 
@@ -165,10 +172,8 @@ $$(document).on('page:init', '.page[data-name="checkout"]', function (e) {
     element.appendChild(li);
 
   }
-  var totalElem = document.createElement("p");
-  totalElem.classList.add("padding-left");
-  var totalNum = document.createTextNode("Total: $" + total.toFixed(2).toString());
-  totalElem.appendChild(totalNum);
+  
+  document.getElementById("total").innerText = "$" + total.toFixed(2).toString();
 
   element.appendChild(totalElem);
 

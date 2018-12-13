@@ -4,6 +4,10 @@ routes = [
     url: './index.html',
   },
   {
+    path: '/checkout_complete/',
+    url: './pages/checkout_complete.html',
+  },
+  {
     path: '/la_frutera/',
     url: './pages/la_frutera.html',
   },
